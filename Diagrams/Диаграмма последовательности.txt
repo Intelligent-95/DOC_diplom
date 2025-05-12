@@ -1,0 +1,69 @@
+@startuml Мессенджер - Схема взаимодействия компонентов
+
+skinparam monochrome true
+skinparam responseMessageBelowArrow true
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+
+actor Пользователь as user
+participant "Браузер\n(index.html, app.js)" as browser
+participant "Сервер\n(run.py)" as server
+participant "WSGI App\n(app.py)" as app
+participant "Маршрутизатор\n(routes.py)" as router
+participant "Обработчики\n(views.py)" as views
+participant "Утилиты\n(utils.py)" as utils
+participant "База данных\n(data.db)" as db
+participant "Файловое\nхранилище" as storage
+
+' 1. Загрузка страницы
+user -> browser: Открывает страницу
+browser -> server: GET / (HTTP)
+server -> app: WSGI запрос
+app -> router: Определение маршрута
+router -> views: IndexView
+views -> browser: HTML страница
+browser -> server: Запрос статики (CSS/JS)
+server -> browser: Статические файлы
+
+' 2. Аутентификация
+user -> browser: Вводит логин/пароль
+browser -> server: POST /login (JSON)
+server -> app: WSGI запрос
+app -> router: /login
+router -> views: LoginView
+views -> utils: Проверка пароля
+utils -> db: SELECT users
+db --> utils: Данные пользователя
+utils --> views: Результат проверки
+views -> browser: Установка cookies (user_id)
+views -> browser: Редирект на /
+
+' 3. Отправка сообщения
+user -> browser: Вводит сообщение
+browser -> server: POST /send_message (FormData)
+server -> app: WSGI запрос
+app -> router: /send_message
+router -> views: SendMessageView
+views -> utils: Проверка прав
+utils -> db: Проверка user_id
+db --> utils: Результат
+utils --> views: Подтверждение
+views -> storage: Сохранение вложений (если есть)
+views -> db: INSERT message
+db --> views: ID сообщения
+views -> browser: {"status": "success"}
+
+' 4. Получение сообщений
+browser -> server: GET /get_messages?timestamp=0
+server -> app: WSGI запрос
+app -> router: /get_messages
+router -> views: GetMessageView
+views -> db: SELECT messages\nWHERE timestamp > 0
+db --> views: Список сообщений
+views -> browser: JSON с сообщениями
+
+' 5. Обновление интерфейса
+browser -> browser: Отображение новых сообщений
+browser -> server: Периодические запросы\n/get_messages?timestamp=X
+
+@enduml
