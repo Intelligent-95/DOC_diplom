@@ -1,0 +1,77 @@
+@startuml Корпоративный мессенджер - Deployment Diagram
+
+skinparam monochrome true
+skinparam nodesep 50
+skinparam ranksep 50
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+
+' Узлы (Nodes)
+node "Клиентское устройство" as client {
+  component "Браузер пользователя" as browser {
+    [index.html]
+    [app.js]
+    [style.css]
+  }
+}
+
+node "Сервер приложений" as server {
+  component "WSGI (Waitress)" as waitress {
+    [run.py]
+  }
+  
+  component "Python App" as python {
+    [app.py]
+    [routes.py]
+    [views.py]
+    [utils.py]
+    [mimes.py]
+  }
+}
+
+node "База данных" as db {
+  database "SQLite (data.db)" as sqlite {
+    [User]
+    [GroupMessage]
+    [Group]
+    [PrivateMessage]
+    [GroupMember]
+    [Attacment]
+  }
+}
+
+node "Файловое хранилище" as storage {
+  folder "static/uploads" as files
+  folder "templates" as templates
+}
+
+' Связи
+browser -- waitress : HTTP/HTTPS (порт 8000)\nREST API
+waitress --> python : WSGI
+python --> sqlite : SQL запросы\n(через utils.py)
+python --> files : Чтение/запись файлов
+python --> templates : Отдача статики
+[views.py] --> [mimes.py] : Определение\nMIME-типов
+
+db .. storage : Локальное хранилище
+
+note right of python
+  Основные компоненты:
+  - Обработка аутентификации
+  - Работа с сообщениями
+  - Управление группами
+  - Работа с вложениями
+end note
+
+legend right
+  == Компоненты системы ==
+  | Frontend | HTML/CSS/JS |
+  | Backend | Python + Waitress |
+  | Данные | SQLite + файлы |
+  == Протоколы ==
+  | HTTP | REST API |
+  | WSGI | Python Web |
+  | SQL | SQLite |
+endlegend
+
+@enduml
