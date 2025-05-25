@@ -99,6 +99,33 @@ ER-модель отражает строгую структуру данных,
 
 Таблица "GroupMessage" хранит все сообщения, отправленные в групповых чатах. Каждое сообщение связано с группой и пользователем-отправителем. Поддерживает текстовые сообщения и сообщения с вложениями (через таблицу Attachment).
 
+\subsubsection{PrivateMessage - Личные сообщения}
+\begin{xltabular}{\textwidth}{|l|l|X|}
+	\caption{Атрибуты сущности "Личные сообщения"\label{privatemessage:table}}\\ \hline
+	\centrow Поле & \centrow Тип & \centrow Описание \\hline
+	\thead{id} & \thead{INTEGER} & Первичный ключ (PK), уникальный идентификатор сообщения \\ \hline
+	\thead{sender\_id} & \thead{INTEGER} & Внешний ключ (FK→User), ID отправителя сообщения \\ \hline
+	\thead{receiver\_id} & \thead{INTEGER} & Внешний ключ (FK→User), ID получателя сообщения \\ \hline
+	\thead{message\_text} & \thead{TEXT} & Текст сообщения (может быть пустым для сообщений с вложениями) \\ \hline
+	\thead{timestamp} & \thead{INTEGER} & Время отправки сообщения (timestamp) \\ \hline
+\end{xltabular}
+
+Таблица "PrivateMessage" хранит историю приватных сообщений между пользователями. Каждое сообщение связывает отправителя и получателя, поддерживает текстовый контент и вложения (через таблицу Attachment). Реализует функционал личной переписки между сотрудниками организации.
+
+\subsubsection{Attachment - Вложения к сообщениям}
+\begin{xltabular}{\textwidth}{|l|l|X|}
+	\caption{Атрибуты сущности "Вложения"\label{attachment:table}}\\ \hline
+	\centrow Поле & \centrow Тип & \centrow Описание \\ \hline
+	\thead{id} & \thead{INTEGER} & Первичный ключ (PK), уникальный идентификатор вложения \\ \hline
+	\thead{message\_type} & \thead{TEXT} & Тип сообщения: 'general' (системные), 'group' (групповые), 'private' (личные) \\ \hline
+	\thead{message\_id} & \thead{INTEGER} & ID сообщения, к которому относится вложение \\ \hline
+	\thead{file\_path} & \thead{TEXT} & Путь к файлу в файловом хранилище системы \\ \hline
+	\thead{mime\_type} & \thead{TEXT} & MIME-тип файла для корректной обработки клиентом \\ \hline
+	\thead{filename} & \thead{TEXT} & Оригинальное имя файла для отображения пользователю \\ \hline
+\end{xltabular}
+
+Таблица "Attachment" обеспечивает хранение файловых вложений для всех типов сообщений в системе. Универсальная структура позволяет прикреплять файлы к групповым чатам, личным сообщениям и системным уведомлениям. Содержит метаданные файлов для правильного отображения в клиентских приложениях.
+
 На рисунке \ref{data:image} представлена схема обмена данными между сценариями компонента при вызове компонента на странице сайта.
 
 \begin{figure}[H]
