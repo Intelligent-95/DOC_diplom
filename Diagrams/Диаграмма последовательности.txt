@@ -1,4 +1,4 @@
-@startuml Мессенджер - Схема взаимодействия компонентов
+@startuml Мессенджер - Схема взаимодействия компонентов (v2)
 
 skinparam monochrome true
 skinparam responseMessageBelowArrow true
@@ -10,8 +10,8 @@ participant "Браузер\n(index.html, app.js)" as browser
 participant "Сервер\n(run.py)" as server
 participant "WSGI App\n(app.py)" as app
 participant "Маршрутизатор\n(routes.py)" as router
-participant "Обработчики\n(views.py)" as views
-participant "Утилиты\n(utils.py)" as utils
+participant "Пакет views\n" as views
+participant "Пакет models\n" as models
 participant "База данных\n(data.db)" as db
 participant "Файловое\nхранилище" as storage
 
@@ -20,7 +20,7 @@ user -> browser: Открывает страницу
 browser -> server: GET / (HTTP)
 server -> app: WSGI запрос
 app -> router: Определение маршрута
-router -> views: IndexView
+router -> views: base.py (IndexView)
 views -> browser: HTML страница
 browser -> server: Запрос статики (CSS/JS)
 server -> browser: Статические файлы
@@ -30,40 +30,44 @@ user -> browser: Вводит логин/пароль
 browser -> server: POST /login (JSON)
 server -> app: WSGI запрос
 app -> router: /login
-router -> views: LoginView
-views -> utils: Проверка пароля
-utils -> db: SELECT users
-db --> utils: Данные пользователя
-utils --> views: Результат проверки
+router -> views: auth.py (LoginHandler)
+views -> models: UserModel.authenticate()
+models -> db: SELECT users
+db --> models: Данные пользователя
+models --> views: User object
 views -> browser: Установка cookies (user_id)
 views -> browser: Редирект на /
 
 ' 3. Отправка сообщения
 user -> browser: Вводит сообщение
-browser -> server: POST /send_message (FormData)
+browser -> server: POST /send (FormData)
 server -> app: WSGI запрос
-app -> router: /send_message
-router -> views: SendMessageView
-views -> utils: Проверка прав
-utils -> db: Проверка user_id
-db --> utils: Результат
-utils --> views: Подтверждение
+app -> router: /send
+router -> views: message.py (MessageHandler)
+views -> models: MessageModel.check_permissions()
+models -> db: Проверка прав
+db --> models: Результат
+models --> views: Подтверждение
 views -> storage: Сохранение вложений (если есть)
-views -> db: INSERT message
-db --> views: ID сообщения
+views -> models: MessageModel.create()
+models -> db: INSERT message
+db --> models: ID сообщения
+models --> views: Message object
 views -> browser: {"status": "success"}
 
 ' 4. Получение сообщений
-browser -> server: GET /get_messages?timestamp=0
+browser -> server: GET /messages?since=0
 server -> app: WSGI запрос
-app -> router: /get_messages
-router -> views: GetMessageView
-views -> db: SELECT messages\nWHERE timestamp > 0
-db --> views: Список сообщений
+app -> router: /messages
+router -> views: message.py (GetMessagesHandler)
+views -> models: MessageModel.get_since()
+models -> db: SELECT messages\nWHERE timestamp > 0
+db --> models: Список сообщений
+models --> views: Message list
 views -> browser: JSON с сообщениями
 
 ' 5. Обновление интерфейса
 browser -> browser: Отображение новых сообщений
-browser -> server: Периодические запросы\n/get_messages?timestamp=X
+browser -> server: Периодические запросы\n/messages?since=X
 
 @enduml
