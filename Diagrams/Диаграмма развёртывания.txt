@@ -21,9 +21,24 @@ node "Сервер приложений" as server {
   }
   
   component "Python App" as python {
-    [app.py]
-    [routes.py]
-    [views.py]
+    package "views" as views {
+      [auth.py]
+      [groups.py]
+      [message.py]
+      [p_chat.py]
+      [__init__.py]
+      [base.py]
+      [error.py]
+      [search.py]
+      [users.py]
+    }
+    
+    package "models" as models {
+      [UserModel.py]
+      [GroupModel.py]
+      [MessageModel.py]
+    }
+    
     [utils.py]
     [mimes.py]
   }
@@ -36,7 +51,7 @@ node "База данных" as db {
     [Group]
     [PrivateMessage]
     [GroupMember]
-    [Attacment]
+    [Attachment]
   }
 }
 
@@ -48,28 +63,28 @@ node "Файловое хранилище" as storage {
 ' Связи
 browser -- waitress : HTTP/HTTPS (порт 8000)\nREST API
 waitress --> python : WSGI
-python --> sqlite : SQL запросы\n(через utils.py)
+models --> sqlite : SQL запросы
+views --> models : Вызов методов\nбизнес-логики
 python --> files : Чтение/запись файлов
 python --> templates : Отдача статики
-[views.py] --> [mimes.py] : Определение\nMIME-типов
+views --> mimes : Определение\nMIME-типов
+views --> utils : Вспомогательные\nфункции
 
 db .. storage : Локальное хранилище
 
 note right of python
-  Основные компоненты:
-  - Обработка аутентификации
-  - Работа с сообщениями
-  - Управление группами
-  - Работа с вложениями
+  Модульная структура:
+  - views: обработка HTTP запросов
+  - models: работа с данными
+  - Четкое разделение ответственности
 end note
 
 legend right
-  == Компоненты системы ==
-  | Frontend | HTML/CSS/JS |
-  | Backend | Python + Waitress |
-  | Данные | SQLite + файлы |
-  == Протоколы ==
-  | HTTP | REST API |
+  == Пакеты ==
+  | Views | Разделены по функционалу |
+  | Models | Инкапсуляция работы с БД |
+  == Взаимодействие ==
+  | HTTP | API |
   | WSGI | Python Web |
   | SQL | SQLite |
 endlegend
