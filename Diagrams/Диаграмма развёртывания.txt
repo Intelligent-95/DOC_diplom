@@ -39,7 +39,11 @@ node "Сервер приложений" as server {
       [MessageModel.py]
     }
     
-    [utils.py]
+    package "utils" as utils {
+      [db_utils.py]
+      [pswd_utils.py]
+    }
+
     [mimes.py]
   }
 }
@@ -69,6 +73,7 @@ python --> files : Чтение/запись файлов
 python --> templates : Отдача статики
 views --> mimes : Определение\nMIME-типов
 views --> utils : Вспомогательные\nфункции
+utils --> db : Взаимодействие\nс базой данных
 
 db .. storage : Локальное хранилище
 
@@ -76,6 +81,7 @@ note right of python
   Модульная структура:
   - views: обработка HTTP запросов
   - models: работа с данными
+  - utils: вспомогательные инструменты
   - Четкое разделение ответственности
 end note
 
@@ -83,6 +89,7 @@ legend right
   == Пакеты ==
   | Views | Разделены по функционалу |
   | Models | Инкапсуляция работы с БД |
+  | Utils | Работа с БД и безопасность |
   == Взаимодействие ==
   | HTTP | API |
   | WSGI | Python Web |
