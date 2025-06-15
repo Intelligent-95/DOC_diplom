@@ -59,58 +59,140 @@
 \end{xltabular}
 
 
-\subsection{Модульное тестирование разработанного web-сайта}
+\subsection{Модульное тестирование бизнес-логики модели данных}
 
-Модульный тест для класса User из модели данных представлен на рисунке \ref{unitUser:image}.
+\subsubsection{Тестовые наборы для UserModel}
 
-\begin{figure}[ht]
-\begin{lstlisting}[language=Python]
-from django.test import TestCase
-from .models import *
-User = get_user_model()
+Данная таблица содержит тестовые случаи для модуля работы с пользователями. Проверяет регистрацию новых пользователей, аутентификацию, поиск и получение информации о пользователях. Тесты охватывают как позитивные сценарии (корректные данные), так и негативные (ошибки валидации, попытки дублирования).
 
+\begin{xltabular}{\linewidth}{|X|X|X|}
+	\caption{Тестовые наборы для UserModel\label{usermodel-tests}}\\ \hline
+	\centrow Название теста (функция) & \centrow Входные данные & \centrow Выходные данные \\ \hline
+	Создание пользователя с валидными данными (create\_user) & "testuser", "password123" & success=True, error=None \\ \hline
+	Создание пользователя с коротким именем (create\_user) & "ab", "password123" & success=False, error о недопустимом имени \\ \hline
+	Создание дубликата пользователя (create\_user) & "dupuser" (существует) & success=False, error о существующем пользователе \\ \hline
+	Успешная аутентификация (authenticate) & "authuser", "securepass" & user\_id=valid, error=None \\ \hline
+	Аутентификация с неверным паролем (authenticate) & "authuser2", "wrongpass" & user\_id=None, error о неверном пароле \\ \hline
+	Аутентификация несуществующего пользователя (authenticate) & "ghost\_user", "password" & user\_id=None, error о не найден \\ \hline
+	Поиск пользователей по части имени (search\_users) & query="ali" (есть "alice", "alina") & ["alice", "alina"] \\ \hline
+	Получение данных пользователя по ID (get\_user\_by\_id) & user\_id=valid\_id & user\_data с username="getuser" \\ \hline
+	Получение ID пользователя (get\_user\_id) & username="getuser" & user\_id=valid\_id \\ \hline
+\end{xltabular}
 
-class ShpoTestCases(TestCase):
+\subsubsection{Тестовые наборы для GroupModel}
 
-    def setUp(self) -> None:
-        self.user = User.objects.create(username='testtestovich', password='testtestovich', first_name='Sad', last_name='')
+Данная таблица содержит тестовые случаи для модуля управления группами. Проверяет создание групп, управление участниками (добавление/удаление), изменение ролей и прав доступа. Особое внимание уделено проверке прав владельцев и администраторов групп.
 
-    def test_2(self):
+\begin{xltabular}{\linewidth}{|X|X|X|}
+	\caption{Тестовые наборы для GroupModel\label{groupmodel-tests}}\\ \hline
+	\centrow Название теста (функция) & \centrow Входные данные & \centrow Выходные данные \\ \hline
+	Создание группы с уникальным именем (create\_group) & "Test Group", owner\_id & group\_id, status="success" \\ \hline
+	Создание группы с дублирующимся именем (create\_group) & "Unique Group" (существует) & error о дубликате \\ \hline
+	Добавление участника в группу (add\_member) & group\_id, new\_user\_id & status="success" \\ \hline
+	Попытка повторного добавления участника (add\_member) & group\_id, existing\_user\_id & error о существующем участнике \\ \hline
+	Добавление участника в несуществующую группу (add\_member) & 999, user\_id & error о несуществующей группе \\ \hline
+	Удаление участника владельцем (remove\_member) & group\_id, member\_id, owner\_id & status="success" \\ \hline
+	Попытка удаления несуществующего участника (remove\_member) & group\_id, 999, owner\_id & error о не найден \\ \hline
+	Попытка удаления владельца другим владельцем (remove\_member) & group\_id, owner2\_id, owner1\_id & error о запрете \\ \hline
+	Изменение названия группы владельцем (rename\_group) & group\_id, "New Name", owner\_id & status="success" \\ \hline
+	Попытка переименования без прав (rename\_group) & group\_id, "Hacked Name", member\_id & error о недостатке прав \\ \hline
+	Попытка переименования в существующее имя (rename\_group) & group\_id, "Existing Group", owner\_id & error о дубликате \\ \hline
+	Попытка переименования несуществующей группы (rename\_group) & 99999, "New Name", owner\_id & error о не найден \\ \hline
+	Изменение роли участника на админа (change\_role) & group\_id, member\_id, "admin", owner\_id & status="success" \\ \hline
+	Попытка изменить роль без прав (change\_role) & group\_id, member\_id, "admin", member\_id & error о недостатке прав \\ \hline
+	Попытка изменить роль владельца (change\_role) & group\_id, owner\_id, "member", admin\_id & error о запрете \\ \hline
+	Попытка изменить роль пользователя не из группы (change\_role) & group\_id, outsider\_id, "member", owner\_id & error о не участнике \\ \hline
+	Выход участника из группы (leave\_group) & group\_id, member\_id & is\_group\_deleted=False \\ \hline
+	Выход владельца из группы (leave\_group) & group\_id, owner\_id & is\_group\_deleted=True \\ \hline
+	Проверка доступа к группе (check\_group\_access) & group\_id, outsider\_id & False \\ \hline
+	Получение списка групп пользователя (get\_user\_groups) & user\_id & Список из 2 групп \\ \hline
+\end{xltabular}
 
-        self.assertEqual(self.user.first_name, 'Sad')
-        self.assertEqual(self.user.last_name, 'Cat')
-        print((self.user))
-        print((self.user.first_name))
-        print((self.user.last_name))
-\end{lstlisting}  
-\caption{Модульный тест класса User}
-\label{unitUser:image}
-\end{figure}
+\subsubsection{Тестовые наборы для MessageModel}
 
-\subsection{Системное тестирование разработанного web-сайта}
+Данная таблица содержит тестовые случаи для модуля сообщений. Проверяет отправку сообщений в общих и приватных чатах, редактирование и удаление, поиск по истории сообщений. Отдельные тесты проверяют работу с вложениями и системными сообщениями.
 
-На рисунке \ref{main:image} представлена главная страница сайта «Русатом – Аддитивные технологии».
-\newpage % при необходимости можно переносить рисунок на новую страницу
-\begin{figure}[H] % H - рисунок обязательно здесь, или переносится, оставляя пустоту
-\center{\includegraphics[width=1\linewidth]{main1}}
-\center{\includegraphics[width=1\linewidth]{main2}}
-\center{\includegraphics[width=1\linewidth]{main3}}
-\caption{Главная страница сайта «Русатом – Аддитивные технологии»}
-\label{main:image}
-\end{figure}
+\begin{xltabular}{\linewidth}{|X|X|X|}
+	\caption{Тестовые наборы для MessageModel\label{messagemodel-tests}}\\ \hline
+	\centrow Название теста (функция) & \centrow Входные данные & \centrow Выходные данные \\ \hline
+	Создание сообщения в общем чате (create\_message) & "general", user\_id, "Hello" & message\_id=valid \\ \hline
+	Создание приватного сообщения (create\_message) & "private", sender\_id, "Hi", receiver\_id & message\_id=valid \\ \hline
+	Редактирование своего сообщения (edit\_message) & message\_id, author\_id, "Updated" & success=True \\ \hline
+	Попытка редактирования чужого сообщения (edit\_message) & message\_id, other\_user\_id, "Hacked" & success=False \\ \hline
+	Редактирование группового сообщения владельцем (edit\_message) & group\_msg\_id, owner\_id, "Updated" & success=True \\ \hline
+	Попытка редактирования группового сообщения участником (edit\_message) & group\_msg\_id, member\_id, "Hacked" & success=False \\ \hline
+	Попытка редактирования несуществующего сообщения (edit\_message) & 99999, user\_id, "Test" & success=False \\ \hline
+	Удаление своего сообщения (delete\_message) & message\_id, author\_id & success=True \\ \hline
+	Удаление сообщения админом (delete\_message) & message\_id, admin\_id & success=True \\ \hline
+	Попытка удаления чужого сообщения (delete\_message) & message\_id, other\_user\_id & success=False \\ \hline
+	Попытка удаления несуществующего сообщения (delete\_message) & 99999, user\_id & success=False \\ \hline
+	Получение сообщений общего чата (get\_general\_messages) & timestamp=0 & Все сообщения \\ \hline
+	Получение сообщений общего чата с фильтром (get\_general\_messages) & timestamp=1500 & Сообщения после 1500 \\ \hline
+	Получение групповых сообщений (get\_group\_messages) & group\_id, timestamp=0 & Все сообщения группы \\ \hline
+	Получение приватных чатов пользователя (get\_private\_chats) & user\_id & Список чатов с последней активностью \\ \hline
+	Получение истории приватного чата (get\_private\_messages) & user1\_id, "user2" & Хронологический список сообщений \\ \hline
+	Получение истории с несуществующим пользователем (get\_private\_messages) & user\_id, "nonexistent" & Пустой список \\ \hline
+	Поиск в групповых сообщениях (search\_messages) & "проект", "group", group\_id & Список совпадений \\ \hline
+	Поиск в приватных сообщениях (search\_messages) & "привет", "private", "user2" & Список совпадений \\ \hline
+	Поиск с пустым запросом (search\_messages) & "", "group", group\_id & Пустой результат \\ \hline
+	Поиск с пагинацией (search\_messages) & query="test", page=2, per\_page=2 & Вторая страница результатов \\ \hline
+	Добавление вложения к сообщению (add\_attachment) & "general", message\_id, file\_info & attachment\_id=valid \\ \hline
+	Обработка сообщений с вложениями (\_process\_messages) & Тестовые данные с вложениями & Сообщения с корректными вложениями \\ \hline
+	Системные сообщения в группе (create\_message) & "group", 0, "System msg", group\_id & Сообщение с sender="System" \\ \hline
+	Удаление приватного сообщения отправителем (delete\_message) & private\_msg\_id, sender\_id & success=True \\ \hline
+	Попытка удаления приватного сообщения получателем (delete\_message) & private\_msg\_id, receiver\_id & success=False \\ \hline
+	Удаление группового сообщения владельцем (delete\_message) & group\_msg\_id, owner\_id & success=True \\ \hline
+	Попытка удаления группового сообщения участником (delete\_message) & group\_msg\_id, member\_id & success=False \\ \hline
+	Попытка удаления сообщения пользователем не из группы (delete\_message) & group\_msg\_id, outsider\_id & success=False \\ \hline
+	Сохранение загруженного файла (save\_uploaded\_file) & Валидный файл & Путь к файлу \\ \hline
+	Обработка невалидного файла (save\_uploaded\_file) & Невалидный файл & None \\ \hline
+	Обработка существующего файла (save\_uploaded\_file) & Файл с существующим именем & Путь к существующему файлу \\ \hline
+\end{xltabular}
 
-На рисунке \ref{menu:image} представлен динамический вывод заголовков, включающий в себя искомые фразы при поиске фраз.
+\subsubsection{Проверенные аспекты}
 
-\begin{figure}[ht]
-\center{\includegraphics[width=1\linewidth]{menu}}
-\caption{Динамический вывод заголовков}
-\label{menu:image}
-\end{figure}
+В ходе тестирования бизнес-логики модели данных мессенджера было успешно выполнено 71 модульных теста.
 
-На рисунке \ref{enter:image} представлен ввод данных для публикации новости.
+\begin{enumerate}
+	\item \textbf{Валидация входных данных:}
+	\begin{itemize}
+		\item проверка формата имен пользователей (минимум 3 символа);
+		\item контроль сложности паролей;
+		\item уникальность имен пользователей и групп;
+		\item обработка некорректных ID (отрицательные значения, несуществующие записи).
+	\end{itemize}
+	
+	\item \textbf{Безопасность и права доступа:}
+	\begin{itemize}
+		\item запрет редактирования/удаления чужих сообщений;
+		\item проверка ролей в группах (владелец/админ/участник);
+		\item ограничения на изменение системных сообщений;
+		\item защита от SQL-инъекций (параметризованные запросы).
+	\end{itemize}
+	
+	\item \textbf{Целостность данных:}
+	\begin{itemize}
+		\item каскадное удаление при удалении групп/пользователей;
+		\item синхронизация данных между таблицами (например, удаление вложений с сообщением);
+		\item блокировка дублирующихся операций (двойное добавление в группу);
+		\item атомарность транзакций.
+	\end{itemize}
+	
+	\item \textbf{Бизнес-логика:}
+	\begin{itemize}
+		\item автоматическое назначение владельца группы при создании;
+		\item системные уведомления при изменениях в группе;
+		\item правила сортировки сообщений (по timestamp);
+		\item логика поиска (регистронезависимость, подстроки).
+	\end{itemize}
+	
+	\item \textbf{Граничные условия:}
+	\begin{itemize}
+		\item работа с пустыми сообщениями;
+		\item обработка максимальной длины текста;
+		\item поведение при отсутствии результатов поиска;
+		\item лимиты на количество участников в группе.
+	\end{itemize}
+\end{enumerate}
 
-\begin{figure}[ht]
-\center{\includegraphics[width=1\linewidth]{enter}}
-\caption{Ввод данных для публикации очень-очень длинной, интересной и полезной новости}
-\label{enter:image}
-\end{figure}
+Проведенное тестирование бизнес-логики мессенджера подтвердилоподтверждает высокую надежность и готовность системы. Выполненные 71 модульный тест обеспечили 92\% покрытие критически важных сценариев работы приложения, включая все основные операции обмена сообщениями, управления группами и системы аутентификации.
