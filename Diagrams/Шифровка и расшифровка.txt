@@ -1,0 +1,30 @@
+@startuml
+title Шифрование и расшифровка сообщения в приватном чате
+
+actor Client
+participant "Server" as S
+participant "AES (ECB mode)" as AES
+participant "Base64 Encoder/Decoder" as B64
+
+group Шифрование сообщения
+  Client -> S : Отправляет plaintext сообщение
+  S -> S : Извлечение сессионного ключа \n(из таблицы Session)
+  S -> S : Преобразование текста в байты (UTF-8)
+  S -> S : Применение PKCS7-паддинга для выравнивания
+  S -> AES : Шифрование данных (AES-ECB, сессионный ключ)
+  AES --> S : Возвращает зашифрованные байты (ciphertext)
+  S -> B64 : Кодирование ciphertext в Base64
+  B64 --> S : Base64-кодированный текст
+  S -> Client : Отправка зашифрованного сообщения (Base64)
+end
+
+group Расшифровка сообщения
+  Client -> B64 : Декодирование полученного Base64 текста
+  B64 --> Client : Декодированный ciphertext
+  Client -> AES : AES-дешифрование (ECB, сессионный ключ)
+  AES --> Client : Дешифрованные байты с PKCS7-паддингом
+  Client -> Client : Удаление PKCS7-паддинга\nи преобразование байтов в UTF-8
+  Client -> Client : Получение исходного plaintext сообщения
+end
+
+@enduml
