@@ -1,0 +1,282 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:139.0) Gecko/20100101 Firefox/139.0" version="27.1.6">
+  <diagram name="Страница — 1" id="Hu2k23HrJsWb9x8E-tr-">
+    <mxGraphModel dx="2207" dy="823" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-2" value="&lt;font style=&quot;font-size: 15px;&quot; face=&quot;Times New Roman&quot;&gt;Пользователи&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillStyle=auto;fillColor=light-dark(#FFFFFF,#0000FF);" vertex="1" parent="1">
+          <mxGeometry x="346" y="290" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-3" value="&lt;font style=&quot;font-size: 15px;&quot; face=&quot;Times New Roman&quot;&gt;Групповые чаты&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillStyle=auto;fillColor=light-dark(#FFFFFF,#0000FF);" vertex="1" parent="1">
+          <mxGeometry x="40" y="290" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-4" value="&lt;font style=&quot;font-size: 15px;&quot; face=&quot;Times New Roman&quot;&gt;Личные сообщения&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillStyle=auto;fillColor=light-dark(#FFFFFF,#0000FF);" vertex="1" parent="1">
+          <mxGeometry x="670" y="290" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-5" value="&lt;font style=&quot;font-size: 15px;&quot; face=&quot;Times New Roman&quot;&gt;Вложения&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillStyle=auto;fillColor=light-dark(#FFFFFF,#0000FF);" vertex="1" parent="1">
+          <mxGeometry x="670" y="540" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-6" value="&lt;div&gt;&lt;font style=&quot;font-size: 15px;&quot; face=&quot;Times New Roman&quot;&gt;Групповые&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 15px;&quot; face=&quot;Times New Roman&quot;&gt;сообщения&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillStyle=auto;fillColor=light-dark(#FFFFFF,#0000FF);" vertex="1" parent="1">
+          <mxGeometry x="346" y="540" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-7" value="&lt;div&gt;&lt;font style=&quot;font-size: 15px;&quot; face=&quot;Times New Roman&quot;&gt;Роли групповых&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 15px;&quot; face=&quot;Times New Roman&quot;&gt;чатов&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillStyle=auto;fillColor=light-dark(#FFFFFF,#0000FF);" vertex="1" parent="1">
+          <mxGeometry x="40" y="540" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-8" value="&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 15px;&quot;&gt;Сессии&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillStyle=auto;fillColor=light-dark(#FFFFFF,#0000FF);" vertex="1" parent="1">
+          <mxGeometry x="510" y="650" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="A4NAPMzBS9TOypRGIj_7-9" target="A4NAPMzBS9TOypRGIj_7-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-9" value="&lt;font face=&quot;Courier New&quot;&gt;Принимают участие&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#007FFF);" vertex="1" parent="1">
+          <mxGeometry x="180" y="280" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="A4NAPMzBS9TOypRGIj_7-10" target="A4NAPMzBS9TOypRGIj_7-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="A4NAPMzBS9TOypRGIj_7-10" target="A4NAPMzBS9TOypRGIj_7-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="470" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-10" value="&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;Отправляют&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;Получают&lt;/font&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#007FFF);" vertex="1" parent="1">
+          <mxGeometry x="490" y="280" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-11" value="&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;Могут&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;иметь&lt;/font&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#007FFF);" vertex="1" parent="1">
+          <mxGeometry x="490" y="530" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-13" value="&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;Могут&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;иметь&lt;/font&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#007FFF);direction=south;" vertex="1" parent="1">
+          <mxGeometry x="60" y="370" width="80" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="A4NAPMzBS9TOypRGIj_7-14" target="A4NAPMzBS9TOypRGIj_7-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-14" value="&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;Отправляют&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;Получают&lt;/font&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#007FFF);direction=south;" vertex="1" parent="1">
+          <mxGeometry x="366" y="370" width="80" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="A4NAPMzBS9TOypRGIj_7-15" target="A4NAPMzBS9TOypRGIj_7-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-15" value="&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;Могут&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;иметь&lt;/font&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#007FFF);direction=south;" vertex="1" parent="1">
+          <mxGeometry x="690" y="370" width="80" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-20" value="&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;Могут&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;иметь&lt;/font&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#007FFF);rotation=45;" vertex="1" parent="1">
+          <mxGeometry x="151.86" y="360" width="116.41" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-22" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;id пользователя&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="346" y="170" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-23" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="A4NAPMzBS9TOypRGIj_7-7">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="100" y="520" as="sourcePoint" />
+            <mxPoint x="150" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-24" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="A4NAPMzBS9TOypRGIj_7-13">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="410" y="440" as="sourcePoint" />
+            <mxPoint x="100" y="530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-25" value="&lt;font face=&quot;Courier New&quot;&gt;Имеют&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#007FFF);rotation=-45;" vertex="1" parent="1">
+          <mxGeometry x="156.43" y="450" width="107.26" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-26" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="A4NAPMzBS9TOypRGIj_7-25" target="A4NAPMzBS9TOypRGIj_7-7">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="410" y="440" as="sourcePoint" />
+            <mxPoint x="460" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-28" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="A4NAPMzBS9TOypRGIj_7-13" target="A4NAPMzBS9TOypRGIj_7-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="410" y="440" as="sourcePoint" />
+            <mxPoint x="460" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-29" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="A4NAPMzBS9TOypRGIj_7-13">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="410" y="440" as="sourcePoint" />
+            <mxPoint x="100" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-30" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="A4NAPMzBS9TOypRGIj_7-20" target="A4NAPMzBS9TOypRGIj_7-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="410" y="440" as="sourcePoint" />
+            <mxPoint x="460" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-31" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="A4NAPMzBS9TOypRGIj_7-20" target="A4NAPMzBS9TOypRGIj_7-6">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="410" y="440" as="sourcePoint" />
+            <mxPoint x="460" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-32" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="A4NAPMzBS9TOypRGIj_7-25">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="410" y="440" as="sourcePoint" />
+            <mxPoint x="354" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-35" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="337" y="367" as="sourcePoint" />
+            <mxPoint x="346.06" y="357" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-36" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="A4NAPMzBS9TOypRGIj_7-6">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="482" y="570" as="sourcePoint" />
+            <mxPoint x="532" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-37" value="" style="endArrow=classic;html=1;rounded=0;exitX=-0.014;exitY=0.503;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="A4NAPMzBS9TOypRGIj_7-11">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="482" y="570" as="sourcePoint" />
+            <mxPoint x="472" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-39" value="" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="A4NAPMzBS9TOypRGIj_7-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="650" y="570" as="sourcePoint" />
+            <mxPoint x="700" y="520" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-40" value="" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="A4NAPMzBS9TOypRGIj_7-5" target="A4NAPMzBS9TOypRGIj_7-15">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="496" y="470" as="sourcePoint" />
+            <mxPoint x="546" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-42" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="A4NAPMzBS9TOypRGIj_7-15">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="640" y="420" as="sourcePoint" />
+            <mxPoint x="730" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-45" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="A4NAPMzBS9TOypRGIj_7-10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="490" y="470" as="sourcePoint" />
+            <mxPoint x="660" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-48" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="A4NAPMzBS9TOypRGIj_7-9">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="370" y="470" as="sourcePoint" />
+            <mxPoint x="170" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-49" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="A4NAPMzBS9TOypRGIj_7-9" target="A4NAPMzBS9TOypRGIj_7-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="300" y="370" as="sourcePoint" />
+            <mxPoint x="320" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-51" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="A4NAPMzBS9TOypRGIj_7-14">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="370" y="470" as="sourcePoint" />
+            <mxPoint x="406" y="530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-52" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="A4NAPMzBS9TOypRGIj_7-14" target="A4NAPMzBS9TOypRGIj_7-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="330" y="430" as="sourcePoint" />
+            <mxPoint x="380" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-56" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="A4NAPMzBS9TOypRGIj_7-20" target="A4NAPMzBS9TOypRGIj_7-6">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="230" y="570" as="sourcePoint" />
+            <mxPoint x="280" y="520" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-57" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="331" y="525" as="sourcePoint" />
+            <mxPoint x="341" y="535" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-58" value="&lt;div&gt;&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;пароль&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;пользователя&lt;/font&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="346" y="250" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-59" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;id чата&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="40" y="170" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-60" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;имя чата&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="40" y="130" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-61" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;имя создателя&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="40" y="250" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-62" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;имя пользователя&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="346" y="210" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-63" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;время создания&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="40.000000000000014" y="210" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-64" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;id личного&lt;br&gt;сообщения&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="670" y="90" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-66" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;id отправителя&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="670" y="130" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-67" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;текст сообщения&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="670" y="210" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-68" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;id получателя&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="670" y="170" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-69" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;время отправки&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="670" y="250" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-70" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;id чата&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="40" y="610" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-71" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;id пользователя&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="40" y="650" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-72" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;дата назначения&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="40" y="730" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-73" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;роль пользователя&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="40" y="690" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-75" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;id группового&lt;br&gt;сообщения&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="346" y="610" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-76" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;id чата&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="346" y="650" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-77" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;текст сообщения&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="346" y="730" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-78" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;id отправителя&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="346" y="690" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-79" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;время отправки&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="346" y="770" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-80" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;id вложения&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="670" y="610" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-81" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;место отправки&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="670" y="650" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-82" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;тип файла&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="670" y="730" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-83" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;id сообщения вложения&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="670" y="690" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-84" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;имя файла&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="670" y="770" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-85" value="&lt;blockquote&gt;&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;идентификатор&lt;/font&gt;&lt;/blockquote&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="510" y="730" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="A4NAPMzBS9TOypRGIj_7-86" value="&lt;font style=&quot;font-size: 10px;&quot; face=&quot;Courier New&quot;&gt;ключ&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#66B2FF);" vertex="1" parent="1">
+          <mxGeometry x="510" y="770" width="120" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
