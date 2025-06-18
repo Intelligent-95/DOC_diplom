@@ -52,8 +52,14 @@
 Модуль предназначен для управления подключением к базе данных. Он предоставляет два контекстных менеджера, обеспечивающих безопасное открытие и закрытие соединений и курсоров, что минимизирует риск утечек ресурсов.
 
 \begin{xltabular}{\textwidth}{|l|X|}
-	\caption{Методы модуля db\_utils}\\ \hline
+	\caption{Методы модуля db\_utils}\label{dbutils:table} \\ \hline
 	\centrow Метод & \centrow Описание \\ \hline
+	\endfirsthead
+	
+	\continuecaption{Продолжение таблицы \ref{dbutils:table}}
+	\centrow Метод & \centrow Описание \\ \hline
+	\finishhead
+	
 	get\_db\_connection & Контекстный менеджер для работы с базой данных. Автоматически открывает и закрывает соединение, предотвращая блокировку ресурсов. \\ \hline
 	get\_db\_cursor & Контекстный менеджер для работы с курсором базы данных. Использует get\_db\_connection, обеспечивая доступ к курсору и корректное закрытие после завершения работы. \\ \hline
 \end{xltabular}
@@ -65,9 +71,16 @@
 
 Данная таблица содержит тестовые случаи для модуля работы с пользователями. Проверяет регистрацию новых пользователей, аутентификацию, поиск и получение информации о пользователях. Тесты охватывают как позитивные сценарии (корректные данные), так и негативные (ошибки валидации, попытки дублирования).
 
+
 \begin{xltabular}{\linewidth}{|X|X|X|}
 	\caption{Тестовые наборы для UserModel\label{usermodel-tests}}\\ \hline
 	\centrow Название теста (функция) & \centrow Входные данные & \centrow Выходные данные \\ \hline
+	\endfirsthead
+	
+	\continuecaption{Продолжение таблицы \ref{usermodel-tests}}
+	\centrow Название теста (функция) & \centrow Входные данные & \centrow Выходные данные \\ \hline
+	\finishhead
+	
 	Создание пользователя с валидными данными (create\_user) & "testuser", "password123" & success=True, error=None \\ \hline
 	Создание пользователя с коротким именем (create\_user) & "ab", "password123" & success=False, error о недопустимом имени \\ \hline
 	Создание дубликата пользователя (create\_user) & "dupuser" (существует) & success=False, error о существующем пользователе \\ \hline
@@ -86,6 +99,12 @@
 \begin{xltabular}{\linewidth}{|X|X|X|}
 	\caption{Тестовые наборы для GroupModel\label{groupmodel-tests}}\\ \hline
 	\centrow Название теста (функция) & \centrow Входные данные & \centrow Выходные данные \\ \hline
+	\endfirsthead
+	
+	\continuecaption{Продолжение таблицы \ref{groupmodel-tests}}
+	\centrow Название теста (функция) & \centrow Входные данные & \centrow Выходные данные \\ \hline
+	\finishhead
+	
 	Создание группы с уникальным именем (create\_group) & "Test Group", owner\_id & group\_id, status="success" \\ \hline
 	Создание группы с дублирующимся именем (create\_group) & "Unique Group" (существует) & error о дубликате \\ \hline
 	Добавление участника в группу (add\_member) & group\_id, new\_user\_id & status="success" \\ \hline
@@ -115,6 +134,12 @@
 \begin{xltabular}{\linewidth}{|X|X|X|}
 	\caption{Тестовые наборы для MessageModel\label{messagemodel-tests}}\\ \hline
 	\centrow Название теста (функция) & \centrow Входные данные & \centrow Выходные данные \\ \hline
+	\endfirsthead
+	
+	\continuecaption{Продолжение таблицы \ref{messagemodel-tests}}
+	\centrow Название теста (функция) & \centrow Входные данные & \centrow Выходные данные \\ \hline
+	\finishhead
+	
 	Создание сообщения в общем чате (create\_message) & "general", user\_id, "Hello" & message\_id=valid \\ \hline
 	Создание приватного сообщения (create\_message) & "private", sender\_id, "Hi", receiver\_id & message\_id=valid \\ \hline
 	Редактирование своего сообщения (edit\_message) & message\_id, author\_id, "Updated" & success=True \\ \hline

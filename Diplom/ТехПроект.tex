@@ -148,8 +148,14 @@ ER-модель отражает строгую структуру данных,
 \begin{xltabular}{\textwidth}{|l|l|X|}
 	\caption{Атрибуты сущности "Session"\label{session:table}}\\ \hline
 	\centrow Поле & \centrow Тип & \centrow Описание \\ \hline
-	\thead{id} & \thead{TEXT} & Первичный ключ (PK), уникальный идентификатор сессии, который генерируется при авторизации пользователя \\ \hline
-	\thead{key} & \thead{TEXT} & Сессионный ключ, используемый для криптографической защиты приватных сообщений в рамках текущей сессии \\ \hline
+	\endfirsthead
+	
+	\continuecaption{Продолжение таблицы \ref{session:table}}
+	\centrow Поле & \centrow Тип & \centrow Описание \\ \hline
+	\finishhead
+	
+	id & TEXT & Первичный ключ (PK), уникальный идентификатор сессии, который генерируется при авторизации пользователя \\ \hline
+	key & TEXT & Сессионный ключ, используемый для криптографической защиты приватных сообщений в рамках текущей сессии \\ \hline
 \end{xltabular}
 
 Таблица «Session» хранит временные данные, необходимые для управления активными пользовательскими сессиями. В отличие от основных сущностей, таблица «Session» не содержит внешних ключей к другим таблицам. Связь с пользователем происходит на уровне логики приложения посредством использования сессионного хранилища. Сессионные данные носят временный характер и независимо управляются от постоянных данных основной предметной области.
@@ -169,152 +175,168 @@ ER-модель отражает строгую структуру данных,
 
 Первая нормальная форма требует, чтобы все атрибуты таблиц имели атомарные значения, а каждая запись была уникальной. В корпоративном мессенджере эта концепция реализована следующим образом:
 
-\textbf{Таблица User}  
-\begin{itemize}
-	\item id — уникальный идентификатор, одно значение;
-	\item username — имя пользователя, одно значение;
-	\item password — хэшированный пароль, одно значение.
-\end{itemize}
+\begin{xltabular}{\linewidth}{|l|X|}
+	\caption{1 нормальная форма\label{1nf:table}}\\ \hline
+	\textbf{Таблица} & \textbf{Атрибуты и описание} \\ \hline
+	\endfirsthead
+	
+	\continuecaption{Продолжение таблицы \ref{1nf:table}}
+	\textbf{Таблица} & \textbf{Атрибуты и описание} \\ \hline
+	\finishhead
+	
+	User & 
+	\begin{itemize}[leftmargin=*]
+		\item id — уникальный идентификатор, одно значение;
+		\item username — имя пользователя, одно значение;
+		\item password — хэшированный пароль, одно значение.
+	\end{itemize} \\ \hline
+	Group & 
+	\begin{itemize}[leftmargin=*]
+		\item group\_id — уникальный идентификатор группы, одно значение;
+		\item name — название группы, одно значение;
+		\item creator\_id — идентификатор создателя группы, одно значение;
+		\item created\_at — временная метка создания, одно значение.
+	\end{itemize} \\ \hline
+	GroupMember &
+	\begin{itemize}[leftmargin=*]
+		\item group\_id — идентификатор группы, одно значение;
+		\item user\_id — идентификатор пользователя, одно значение;
+		\item role — роль пользователя в группе (owner, admin, member), одно значение;
+		\item joined\_at — временная метка вступления, одно значение.
+	\end{itemize} \\ \hline
+	GroupMessage &
+	\begin{itemize}[leftmargin=*]
+		\item message\_id — уникальный идентификатор сообщения, одно значение;
+		\item group\_id — идентификатор группы, одно значение;
+		\item user\_id — идентификатор отправителя, одно значение;
+		\item message\_text — текст сообщения, одно значение;
+		\item timestamp — временная метка отправки, одно значение.
+	\end{itemize} \\ \hline
+	PrivateMessage &
+	\begin{itemize}[leftmargin=*]
+		\item id — уникальный идентификатор, одно значение;
+		\item sender\_id — идентификатор отправителя, одно значение;
+		\item receiver\_id — идентификатор получателя, одно значение;
+		\item message\_text — текст сообщения, одно значение;
+		\item timestamp — временная метка отправки, одно значение.
+	\end{itemize} \\ \hline
+	Attachment &
+	\begin{itemize}[leftmargin=*]
+		\item id — уникальный идентификатор вложения, одно значение;
+		\item message\_type — тип сообщения (group, private, system), одно значение;
+		\item message\_id — идентификатор сообщения, одно значение;
+		\item file\_path — путь к файлу, одно значение;
+		\item mime\_type — MIME-тип, одно значение;
+		\item filename — оригинальное имя файла, одно значение.
+	\end{itemize} \\ \hline
+	Session &
+	\begin{itemize}[leftmargin=*]
+		\item id — атомарное значение, уникальный идентификатор сессии (PK);
+		\item key — атомарное значение, сессионный ключ, генерируемый для криптографической защиты сообщений.
+	\end{itemize} \\ \hline
+\end{xltabular}
 
-\textbf{Таблица Group}  
-\begin{itemize}
-	\item group\_id — уникальный идентификатор группы, одно значение;
-	\item name — название группы, одно значение;
-	\item creator\_id — идентификатор создателя группы, одно значение;
-	\item created\_at — временная метка создания, одно значение.
-\end{itemize}
-
-\textbf{Таблица GroupMember}  
-\begin{itemize}
-	\item group\_id — идентификатор группы, одно значение;
-	\item user\_id — идентификатор пользователя, одно значение;
-	\item role — роль пользователя в группе (owner, admin, member), одно значение;
-	\item joined\_at — временная метка вступления, одно значение.
-\end{itemize}
-
-\textbf{Таблица GroupMessage}  
-\begin{itemize}
-	\item message\_id — уникальный идентификатор сообщения, одно значение;
-	\item group\_id — идентификатор группы, одно значение;
-	\item user\_id — идентификатор отправителя, одно значение;
-	\item message\_text — текст сообщения, одно значение;
-	\item timestamp — временная метка отправки, одно значение.
-\end{itemize}
-
-\textbf{Таблица PrivateMessage}  
-\begin{itemize}
-	\item id — уникальный идентификатор, одно значение;
-	\item sender\_id — идентификатор отправителя, одно значение;
-	\item receiver\_id — идентификатор получателя, одно значение;
-	\item message\_text — текст сообщения, одно значение;
-	\item timestamp — временная метка отправки, одно значение.
-\end{itemize}
-
-\textbf{Таблица Attachment}  
-\begin{itemize}
-	\item id — уникальный идентификатор вложения, одно значение;
-	\item message\_type — тип сообщения (group, private, system), одно значение;
-	\item message\_id — идентификатор сообщения, одно значение;
-	\item file\_path — путь к файлу, одно значение;
-	\item mime\_type — MIME-тип, одно значение;
-	\item filename — оригинальное имя файла, одно значение.
-\end{itemize}
-
-\textbf{Таблица Session}
-\begin{itemize}
-	\item id — атомарное значение, уникальный идентификатор сессии (PK);
-	\item key — атомарное значение, сессионный ключ, генерируемый для криптографической защиты сообщений.
-\end{itemize}
+\bigskip
 
 \subsubsection{Вторая нормальная форма (2NF)}
 
 Вторая нормальная форма требует, чтобы таблицы находились в 1NF и все неключевые атрибуты зависели от полного первичного ключа:
 
-\textbf{Таблица User}  
-\begin{itemize}
-	\item username зависит от id;
-	\item password зависит от id.
-\end{itemize}
+\begin{xltabular}{\linewidth}{|l|X|}
+	\caption{2 нормальная форма\label{2nf:table}}\\ \hline
+	\textbf{Таблица} & \textbf{Зависимости атрибутов} \\ \hline
+	\endfirsthead
+	
+	\continuecaption{Продолжение таблицы \ref{2nf:table}}
+	\textbf{Таблица} & \textbf{Зависимости атрибутов} \\ \hline
+	\finishhead
+	
+	User &
+	\begin{itemize}[leftmargin=*]
+		\item username зависит от id;
+		\item password зависит от id.
+	\end{itemize} \\ \hline
+	Group &
+	\begin{itemize}[leftmargin=*]
+		\item name зависит от group\_id;
+		\item creator\_id зависит от group\_id;
+		\item created\_at зависит от group\_id.
+	\end{itemize} \\ \hline
+	GroupMember &
+	\begin{itemize}[leftmargin=*]
+		\item role зависит от полной комбинации ключей (group\_id, user\_id);
+		\item joined\_at зависит от полной комбинации ключей (group\_id, user\_id).
+	\end{itemize} \\ \hline
+	GroupMessage &
+	\begin{itemize}[leftmargin=*]
+		\item group\_id зависит от message\_id;
+		\item user\_id зависит от message\_id;
+		\item message\_text зависит от message\_id;
+		\item timestamp зависит от message\_id.
+	\end{itemize} \\ \hline
+	PrivateMessage &
+	\begin{itemize}[leftmargin=*]
+		\item sender\_id зависит от id;
+		\item receiver\_id зависит от id;
+		\item message\_text зависит от id;
+		\item timestamp зависит от id.
+	\end{itemize} \\ \hline
+	Attachment &
+	\begin{itemize}[leftmargin=*]
+		\item file\_path зависит от комбинации ключей (message\_id, message\_type);
+		\item mime\_type зависит от id;
+		\item filename зависит от id.
+	\end{itemize} \\ \hline
+	Session &
+	\begin{itemize}[leftmargin=*]
+		\item key полностью зависит от id.
+	\end{itemize} \\ \hline
+\end{xltabular}
 
-\textbf{Таблица Group}  
-\begin{itemize}
-	\item name зависит от group\_id;
-	\item creator\_id зависит от group\_id;
-	\item created\_at зависит от group\_id.
-\end{itemize}
-
-\textbf{Таблица GroupMember}  
-\begin{itemize}
-	\item role зависит от полной комбинации ключей group\_id и user\_id;
-	\item joined\_at зависит от полной комбинации ключей group\_id и user\_id.
-\end{itemize}
-
-\textbf{Таблица GroupMessage}  
-\begin{itemize}
-	\item group\_id зависит от message\_id;
-	\item user\_id зависит от message\_id;
-	\item message\_text зависит от message\_id;
-	\item timestamp зависит от message\_id.
-\end{itemize}
-
-\textbf{Таблица PrivateMessage}  
-\begin{itemize}
-	\item sender\_id зависит от id;
-	\item receiver\_id зависит от id;
-	\item message\_text зависит от id;
-	\item timestamp зависит от id.
-\end{itemize}
-
-\textbf{Таблица Attachment}  
-\begin{itemize}
-	\item message\_id и message\_type формируют ключ, от которого зависит file\_path;
-	\item mime\_type зависит от id;
-	\item filename зависит от id.
-\end{itemize}
-
-\textbf{Таблица Session}  
-\begin{itemize}
-	\item единственный неключевой атрибут key полностью зависит от единственного первичного ключа id.
-\end{itemize}
+\bigskip
 
 \subsubsection{Третья нормальная форма (3NF)}
 
 Третья нормальная форма требует устранения транзитивных зависимостей — все атрибуты должны зависеть только от первичного ключа:
 
-\textbf{Таблица User}  
-\begin{itemize}
-	\item password зависит только от id, а не от username.
-\end{itemize}
-
-\textbf{Таблица Group}  
-\begin{itemize}
-	\item created\_at зависит только от group\_id, а не от name.
-\end{itemize}
-
-\textbf{Таблица GroupMember}  
-\begin{itemize}
-	\item role зависит только от group\_id и user\_id.
-\end{itemize}
-
-\textbf{Таблица GroupMessage}  
-\begin{itemize}
-	\item timestamp зависит только от message\_id.
-\end{itemize}
-
-\textbf{Таблица PrivateMessage}  
-\begin{itemize}
-	\item message\_text зависит только от id.
-\end{itemize}
-
-\textbf{Таблица Attachment}  
-\begin{itemize}
-	\item mime\_type зависит только от id вложения, а не от file\_path.
-\end{itemize}
-
-\textbf{Таблица Session}  
-\begin{itemize}
-	\item атрибут key зависит непосредственно от первичного ключа id и не зависит от каких-либо других неключевых атрибутов.
-\end{itemize}
+\begin{xltabular}{\linewidth}{|l|X|}
+	\caption{3 нормальная форма\label{3nf:table}}\\ \hline
+	\textbf{Таблица} & \textbf{Уточнение зависимости} \\ \hline
+	\endfirsthead
+	
+	\continuecaption{Продолжение таблицы \ref{3nf:table}}
+	\textbf{Таблица} & \textbf{Уточнение зависимости} \\ \hline
+	\finishhead
+	
+	User &
+	\begin{itemize}[leftmargin=*]
+		\item password зависит только от id, а не от username.
+	\end{itemize} \\ \hline
+	Group &
+	\begin{itemize}[leftmargin=*]
+		\item created\_at зависит только от group\_id, а не от name.
+	\end{itemize} \\ \hline
+	GroupMember &
+	\begin{itemize}[leftmargin=*]
+		\item role зависит только от комбинации (group\_id, user\_id).
+	\end{itemize} \\ \hline
+	GroupMessage &
+	\begin{itemize}[leftmargin=*]
+		\item timestamp зависит только от message\_id.
+	\end{itemize} \\ \hline
+	PrivateMessage &
+	\begin{itemize}[leftmargin=*]
+		\item message\_text зависит только от id.
+	\end{itemize} \\ \hline
+	Attachment &
+	\begin{itemize}[leftmargin=*]
+		\item mime\_type зависит только от id вложения, а не от file\_path.
+	\end{itemize} \\ \hline
+	Session &
+	\begin{itemize}[leftmargin=*]
+		\item key зависит непосредственно от первичного ключа id.
+	\end{itemize} \\ \hline
+\end{xltabular}
 
 Применение 3NF помогает избавиться от логических несоответствий и повышает управляемость данными.
 
